@@ -61,11 +61,11 @@ public class AutoParkNoSampleDepot extends LinearOpMode {
         driveFromUnlatchedToDepot.run();
         telemetry.addData("Task", "One last thing...");
         telemetry.update();
-//        robot.turnToHeading(165);
+//        robot.turnToHeadingWithoutLoop(165);
         robot.claim.deploy();
         sleep(1500);
         robot.claim.stow();
-//        robot.turnToHeading(180);
+//        robot.turnToHeadingWithoutLoop(180);
         driveABitFurtherToDepot.run();
         robot.turnToHeading(-43);
         driveToCrater.run();

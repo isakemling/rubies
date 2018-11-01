@@ -31,11 +31,8 @@ package org.firstinspires.ftc.teamcode.Tests;
 
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
-import com.qualcomm.robotcore.hardware.PIDCoefficients;
-import com.qualcomm.robotcore.hardware.PWMOutput;
 
 import org.firstinspires.ftc.teamcode.HWMaps.Robot;
-import org.firstinspires.ftc.teamcode.Lib.PIDController;
 
 /**
  * This file contains an example of an iterative (Non-Linear) "OpMode".
@@ -53,7 +50,7 @@ import org.firstinspires.ftc.teamcode.Lib.PIDController;
 
 @TeleOp(name="Stay At Heading 0 Test", group="Tests")
 //@Disabled
-public class TurnToAngleTest extends OpMode {
+public class TurnToAnglesTest extends OpMode {
     private Robot robot = Robot.getInstance();
     private double error;
     private double leftPower;
@@ -71,8 +68,9 @@ public class TurnToAngleTest extends OpMode {
      */
     @Override
     public void loop() {
-        robot.sensors.updateIMU();
-        robot.turnToHeading(-30);
-        telemetry.addData("Gyro Heading", robot.sensors.getHeading());
+        robot.turnToHeadingWithoutLoop(0);
+        robot.turnToHeadingWithoutLoop(180);
+        robot.turnToHeadingWithoutLoop(-180);
+        robot.turnToHeadingWithoutLoop(90);
     }
 }

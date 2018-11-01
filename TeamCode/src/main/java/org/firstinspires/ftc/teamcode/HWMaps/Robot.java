@@ -80,6 +80,15 @@ public class Robot
         drive.setPowers(0, 0);
     }
 
+    public void turnToHeadingWithoutLoop(double targetHeading) {
+        sensors.updateIMU();
+        double kP = 0.0065;
+        double error = targetHeading - sensors.getHeading();
+        double leftPower = PIDController.proportionalController(0, error, -kP);
+        double rightPower = PIDController.proportionalController(0, error, kP);
+        drive.setPowers(leftPower, rightPower);
+    }
+
     public static Robot getInstance() {
         return instance;
     }
